@@ -6,67 +6,65 @@
   <title>Nuro Group – Launching Soon</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      color: white;
-      background: url("https://www.nurogroup.co.uk/assets/holding/Hero.png") no-repeat center center;
-      background-size: cover;
-      position: relative;
+    :root{
+      --ink:#333;            /* dark grey text */
+      --overlay:rgba(255,255,255,.25); /* white tint over image */
+      --panel:#f3f4f6;       /* light grey popup */
+      --border:#e5e7eb;      /* subtle border */
     }
-    body::after {
-      /* subtle overlay for text readability */
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.6));
-      z-index: 0;
+    /* Page */
+    html,body{height:100%;margin:0}
+    body{
+      font-family:'Roboto',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--ink);
+      position:relative;
+      overflow-x:hidden;
     }
-    .stack {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      padding: 0 20px;
+    /* Background image + white overlay */
+    body::before{
+      content:"";position:absolute;inset:0;z-index:-2;
+      background:url("https://www.nurogroup.co.uk/assets/holding/Hero.png") no-repeat center/cover;
     }
-    .logo {
-      width: clamp(220px, 30vw, 480px);
-      height: auto;
-      display: block;
-      margin: 0 auto;
+    body::after{
+      content:"";position:absolute;inset:0;z-index:-1;background:var(--overlay);
     }
-    .launching {
-      margin-top: 4rem; /* double spacing */
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-      letter-spacing: 0.45em;
-      text-transform: uppercase;
-      font-size: clamp(14px, 2vw, 18px);
+
+    /* Centered hero stack (logo + launching soon) */
+    .center{min-height:100vh;display:grid;place-items:center;padding:0 20px}
+    .stack{max-width:800px;text-align:center}
+    .logo{width:clamp(220px,30vw,520px);height:auto;display:block;margin:0 auto}
+    .launching{
+      margin-top:4rem;margin-bottom:4rem;
+      white-space:nowrap; /* force to stay on one line */
+      display:inline-block;
+      letter-spacing:.45em;
+      text-transform:uppercase;
+      font-size:clamp(14px,2vw,18px);
     }
-    .blurb {
-      font-family: 'Roboto', sans-serif;
-      margin-top: 2rem;
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #f0f0f0;
-    }
+
+    /* Bottom popup */
+    .popup{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);width:min(90%,500px);background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.08);padding:16px 20px 18px 20px;backdrop-filter:saturate(120%) blur(0px)}
+    .popup p{margin:0;font-size:1rem;line-height:1.6;color:#374151;text-align:center}
+    .popup button{all:unset;position:absolute;top:10px;right:12px;cursor:pointer;font-size:18px;line-height:1;padding:6px;border-radius:8px;color:#4b5563}
+    .popup button:hover{background:#e5e7eb}
+    @media (min-width:640px){.popup{padding:18px 24px 20px 24px}}
   </style>
 </head>
 <body>
-  <div class="stack">
-    <img src="https://www.nurogroup.co.uk/assets/holding/Nuro%20Group%20Logo.svg" alt="Nuro Group Logo" class="logo">
-    <div class="launching">L A U N C H I N G&nbsp;&nbsp;S O O N</div>
-    <p class="blurb">
-      NuroGroup is shaping the future of intelligent products and IoT innovation.  
-      We combine design, engineering, and venture building expertise to create new possibilities  
-      in connected systems and emerging technology.
+  <!-- Centered hero content -->
+  <main class="center">
+    <div class="stack">
+      <img src="https://www.nurogroup.co.uk/assets/holding/Nuro%20Group%20Logo.svg" alt="Nuro Group" class="logo">
+      <div class="launching">L A U N C H I N G&nbsp;&nbsp;S O O N</div>
+    </div>
+  </main>
+
+  <!-- Closeable bottom popup with blurb -->
+  <aside class="popup" id="nuro-popup" role="dialog" aria-label="About Nuro Group">
+    <button type="button" aria-label="Close" onclick="document.getElementById('nuro-popup').style.display='none'">×</button>
+    <p>
+      NuroGroup is shaping the future of intelligent products and IoT innovation. We combine design, engineering, and venture building expertise to create new possibilities in connected systems and emerging technology.
     </p>
-  </div>
+  </aside>
 </body>
 </html>
