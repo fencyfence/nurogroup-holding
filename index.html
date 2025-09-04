@@ -1,111 +1,51 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nuro Group — Launching soon</title>
-<meta name="description" content="Nuro Group is a parent company for advanced R&D and technology ventures.">
-<style>
-:root{--max:1200px;--radius:18px;--border:#e5e7eb;--ink:#111827;--muted:#6b7280;--bg:#ffffff;--panel:#f9fafb}
-*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
-.container{max-width:var(--max);margin:0 auto;padding:0 20px}
-.header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border)}
-.header-inner{height:64px;display:flex;align-items:center;justify-content:space-between}
-.btn{display:inline-flex;align-items:center;gap:.5rem;background:#111827;color:#fff;padding:.55rem .9rem;border-radius:12px;text-decoration:none}
-.hero-img{width:100%;max-height:70vh;object-fit:cover;display:block;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.section{padding:48px 0}
-.grid{display:grid;gap:24px}
-.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.card{border:1px solid var(--border);border-radius:var(--radius);padding:20px;background:#fff}
-.panel{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff}
-img.rounded{border-radius:var(--radius);border:1px solid var(--border);display:block;width:100%}
-.subtle{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem}
-h1{font-size:clamp(32px,4vw,44px);margin:.3rem 0 0}
-h2{font-size:clamp(26px,3vw,34px);margin:0 0 .3rem}
-p{margin:.6rem 0}
-.footer{border-top:1px solid var(--border);padding:24px 0;color:#6b7280;text-align:center}
-.badge{position:absolute;right:-60px;bottom:-60px;height:180px;width:180px;background:#fde68a;filter:blur(30px);border-radius:999px;opacity:.35}
-@media (max-width: 900px){.grid-2{grid-template-columns:1fr}}
-</style>
-</head>
-<body>
+export default function App() {
+  return (
+    <main className="relative min-h-screen text-neutral-900">
+      {/* Hero background */}
+      <div className="absolute inset-0">
+        <img
+          src="/assets/holding/Hero.png"
+          alt="Abstract hero"
+          className="w-full h-full object-cover"
+        />
+        {/* Readability overlay */}
+        <div className="absolute inset-0 bg-white/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/40 to-white/70" />
+      </div>
 
-<header class="header">
-  <div class="container header-inner">
-    <div style="display:flex;align-items:center;gap:10px;">
-      <img src="/public/assets/holding/Nuro Group Logo.svg" alt="Nuro Group" style="height:28px">
-    </div>
-    <a class="btn" href="mailto:hello@nurogroup.co.uk">Get in touch</a>
-  </div>
-</header>
+      {/* Centered content */}
+      <section className="relative z-10 min-h-screen grid place-items-center px-6">
+        <div className="flex flex-col items-center text-center">
+          {/* Bigger logo */}
+          <img
+            src="/assets/holding/Nuro Group Logo.svg"
+            alt="Nuro Group"
+            className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto mb-6"
+          />
 
-<!-- Hero -->
-<img class="hero-img" src="/public/assets/holding/Hero.png" alt="Abstract hero">
+          {/* Launching Soon (spaced lettering) */}
+          <div className="uppercase tracking-[0.6em] text-sm sm:text-base text-neutral-700">
+            L A U N C H I N G&nbsp;&nbsp;S O O N
+          </div>
 
-<section class="section">
-  <div class="container">
-    <div class="subtle">Launching soon</div>
-    <h1>Nuro Group</h1>
-    <p style="max-width:780px">
-      Parent company for advanced R&amp;D and technology ventures. We bring together expertise in embedded engineering,
-      industrial design, and product commercialisation to turn complex ideas into scalable solutions.
-    </p>
-  </div>
-</section>
+          {/* Subtle hints at what's coming */}
+          <div className="mt-6 space-y-2 text-neutral-700/80 text-sm sm:text-base max-w-2xl">
+            <p>Incubating intelligent hardware & software ventures.</p>
+            <p>Edge AI, embedded systems, thermal & energy innovation.</p>
+            <p>From proof-of-concept to market-ready products.</p>
+          </div>
 
-<!-- Stats -->
-<section class="section">
-  <div class="container grid grid-2">
-    <img class="rounded" src="/public/assets/holding/stats.png" alt="PCB abstract">
-    <div class="grid grid-3">
-      <div class="card"><div style="font-size:28px;font-weight:600">200+</div><div class="subtle" style="text-transform:none;letter-spacing:0">projects delivered</div></div>
-      <div class="card"><div style="font-size:28px;font-weight:600">10+</div><div class="subtle" style="text-transform:none;letter-spacing:0">patents authored</div></div>
-      <div class="card"><div style="font-size:28px;font-weight:600">—</div><div class="subtle" style="text-transform:none;letter-spacing:0">award-winning design &amp; engineering</div></div>
-    </div>
-  </div>
-</section>
+          {/* CTA */}
+          <a
+            href="mailto:hello@nurogroup.co.uk"
+            className="mt-8 inline-flex items-center rounded-xl bg-neutral-900 text-white px-4 py-2 text-sm sm:text-base hover:bg-neutral-800 transition"
+          >
+            hello@nurogroup.co.uk
+          </a>
+        </div>
+      </section>
+    </main>
+  );
+}
 
-<!-- What we do / Surfaces -->
-<section class="section">
-  <div class="container grid grid-2" style="align-items:center">
-    <div>
-      <h2>What we do</h2>
-      <p>We incubate and back R&amp;D programmes that bridge concept and execution — across AI, connected devices,
-         thermal &amp; energy systems, and next-generation user experiences.</p>
-    </div>
-    <img class="rounded" src="/public/assets/holding/surfaces.png" alt="Surfaces & shadows">
-  </div>
-</section>
-
-<!-- Logistics -->
-<section class="section" style="background:#fafafa;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-  <div class="container">
-    <img class="rounded" src="/public/assets/holding/logistics.png" alt="Logistics abstraction">
-  </div>
-</section>
-
-<!-- PCB -->
-<section class="section">
-  <div class="container">
-    <img class="rounded" src="/public/assets/holding/pcb.png" alt="PCB close-up">
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section">
-  <div class="container panel" style="position:relative;padding:28px">
-    <div style="max-width:700px">
-      <h2>Have a problem worth solving?</h2>
-      <p>We collaborate to de-risk technical bets and bring new categories to life.</p>
-      <a class="btn" href="mailto:hello@nurogroup.co.uk">hello@nurogroup.co.uk</a>
-    </div>
-    <div class="badge"></div>
-  </div>
-</section>
-
-<footer class="footer">© <span id="y"></span> Nuro Group</footer>
-<script>document.getElementById('y').textContent = new Date().getFullYear()</script>
-</body>
-</html>
 
