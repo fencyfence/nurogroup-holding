@@ -1,61 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nuro Group – Launching Soon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nuro Group — Launching Soon</title>
+  <meta name="description" content="Nuro Group is a parent company for advanced R&D and technology ventures.">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background: url("https://www.nurogroup.co.uk/assets/holding/Hero.png") no-repeat center center;
-      background-size: cover;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
+    :root{
+      --ink:#111827; --muted:#6b7280; --overlay1:rgba(255,255,255,.30); --overlay2:rgba(255,255,255,.65);
     }
-    .overlay {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 60px 30px;
-      border-radius: 16px;
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--ink);background:#fff}
+
+    /* Full-viewport hero */
+    .hero{
+      position:relative; min-height:100vh; width:100%;
+      display:grid; place-items:center; overflow:hidden;
+      background:#fff;
     }
-    .logo {
-      max-width: 400px;
-      width: 100%;
+    .hero::before{
+      content:""; position:absolute; inset:0; z-index:0;
+      background-image:url('https://www.nurogroup.co.uk/assets/holding/Hero.png');
+      background-size:cover; background-position:center; background-repeat:no-repeat;
+      transform:translateZ(0);
     }
-    .launching {
-      font-size: 1.8rem;
-      letter-spacing: 0.3em;
-      margin-top: 2rem; /* double line spacing */
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
+    .hero::after{
+      content:""; position:absolute; inset:0; z-index:1;
+      /* subtle wash for readability */
+      background: linear-gradient(to bottom, var(--overlay1), var(--overlay2));
     }
-    .blurb {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1rem;
-      margin-top: 2rem; /* double line spacing */
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
+
+    /* Center stack */
+    .stack{
+      position:relative; z-index:2; text-align:center;
+      display:flex; flex-direction:column; align-items:center; padding:24px;
     }
+
+    /* Logo sizing: never huge, never tiny */
+    .logo{
+      width:clamp(220px, 32vw, 520px);
+      max-width:90vw; height:auto; display:block;
+      filter:drop-shadow(0 2px 10px rgba(0,0,0,.08));
+    }
+
+    .soon{
+      margin-top:18px;
+      letter-spacing:.45em; text-transform:uppercase;
+      font-size:clamp(12px, 1.6vw, 14px); color:#1f2937; opacity:.9;
+    }
+
+    /* Optional small hints — delete this block if you want ultra-minimal */
+    .hints{
+      margin-top:16px; color:#374151; opacity:.9;
+      font-size:clamp(13px, 1.8vw, 15px);
+    }
+    .hints p{margin:.35rem 0}
+
+    .cta{
+      margin-top:22px; display:inline-flex; align-items:center;
+      background:#111827; color:#fff; text-decoration:none;
+      padding:.6rem .95rem; border-radius:12px; font-size:14px;
+    }
+    .cta:hover{background:#0f172a}
+
+    footer{ text-align:center; color:#6b7280; padding:18px }
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <img src="https://www.nurogroup.co.uk/assets/holding/Nuro%20Group%20Logo.svg" alt="Nuro Group Logo" class="logo">
-    <div class="launching">L A U N C H I N G &nbsp; S O O N</div>
-    <p class="blurb">
-      Nuro Group is shaping the future of intelligent products and IoT innovation.  
-      We combine design, engineering, and venture building expertise to create new possibilities  
-      in connected systems and emerging technology.
-    </p>
-  </div>
+  <main class="hero">
+    <div class="stack">
+      <!-- Update path if your logo is elsewhere -->
+      <img class="logo" src="https://www.nurogroup.co.uk/assets/holding/Nuro%20Group%20Logo.svg" alt="Nuro Group">
+
+      <div class="soon">L A U N C H I N G&nbsp;&nbsp;S O O N</div>
+
+      <!-- Optional copy (remove if not wanted) -->
+      <div class="hints" aria-hidden="false">
+        <p>Incubating intelligent hardware & software ventures.</p>
+        <p>Edge AI • embedded systems • thermal & energy innovation.</p>
+        <p>From proof-of-concept to market-ready products.</p>
+      </div>
+
+      <a class="cta" href="mailto:hello@nurogroup.co.uk">hello@nurogroup.co.uk</a>
+    </div>
+  </main>
+
+  <footer>© <span id="y"></span> Nuro Group</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
+
